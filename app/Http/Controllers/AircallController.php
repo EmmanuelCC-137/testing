@@ -18,9 +18,9 @@ class AircallController extends Controller
         $this->token = env('AIRCALL_API_TOKEN');
     }
 
-    /**
-     * Cliente HTTP con config común
-     */
+    
+     # Cliente HTTP
+     
     private function client()
     {
         return Http::withBasicAuth($this->id, $this->token)
@@ -30,9 +30,8 @@ class AircallController extends Controller
             ->timeout(20);
     }
 
-    /**
-     * Proxy genérico para endpoints de Aircall
-     */
+    
+      # Proxy 
     private function proxy(string $path, array $query = [])
     {
         try {
@@ -47,10 +46,9 @@ class AircallController extends Controller
         }
     }
 
-    /**
-     * Lista de usuarios
-     * GET /aircall/users?page=1&per_page=5
-     */
+    
+     # Lista de usuarios
+     
     public function users(Request $request)
     {
         $page     = (int) $request->query('page', 1);
@@ -59,10 +57,9 @@ class AircallController extends Controller
         return $this->proxy('/users', compact('page', 'per_page'));
     }
 
-    /**
-     * Lista de llamadas
-     * GET /aircall/calls?page=1&per_page=5
-     */
+    
+     # Lista de llamadas
+    
     public function calls(Request $request)
     {
         $page     = (int) $request->query('page', 1);
@@ -71,10 +68,7 @@ class AircallController extends Controller
         return $this->proxy('/calls', compact('page', 'per_page'));
     }
 
-    /**
-     * Lista de contactos
-     * GET /aircall/contacts?page=1&per_page=5
-     */
+    #Lista de contactos
     public function contacts(Request $request)
     {
         $page     = (int) $request->query('page', 1);
@@ -83,7 +77,7 @@ class AircallController extends Controller
         return $this->proxy('/contacts', compact('page', 'per_page'));
     }
 
-
+#Lista de numeros
     public function numbers(Request $request)
     {
         $page     = (int) $request->query('page', 1);
@@ -91,7 +85,7 @@ class AircallController extends Controller
 
         return $this->proxy('/numbers', compact('page', 'per_page'));
     }
-
+#Lista de equipos
     public function teams(Request $request)
     {
         $page     = (int) $request->query('page', 1);
@@ -99,12 +93,20 @@ class AircallController extends Controller
 
         return $this->proxy('/teams', compact('page', 'per_page'));
     }
-
+#Lista de etiquetas
     public function tags(Request $request)
     {
         $page     = (int) $request->query('page', 1);
         $per_page = (int) $request->query('per_page', 5);
 
         return $this->proxy('/tags', compact('page', 'per_page'));
+    }
+#Lista de compañia
+      public function company(Request $request)
+    {
+        $page     = (int) $request->query('page', 1);
+        $per_page = (int) $request->query('per_page', 5);
+
+        return $this->proxy('/company', compact('page', 'per_page'));
     }
 }
