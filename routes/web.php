@@ -16,3 +16,4 @@ Route::get('/aircall/contacts', [AircallController::class, 'contacts']);
 Route::get('/aircall/numbers', [AircallController::class, 'numbers']);
 Route::get('/aircall/teams', [AircallController::class, 'teams']);
 Route::get('/aircall/tags', [AircallController::class, 'tags']);
+Route::get('/aircall/company', [AircallController::class, 'tags']);
