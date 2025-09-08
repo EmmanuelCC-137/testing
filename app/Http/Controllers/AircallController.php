@@ -82,4 +82,29 @@ class AircallController extends Controller
 
         return $this->proxy('/contacts', compact('page', 'per_page'));
     }
+
+
+    public function numbers(Request $request)
+    {
+        $page     = (int) $request->query('page', 1);
+        $per_page = (int) $request->query('per_page', 5);
+
+        return $this->proxy('/numbers', compact('page', 'per_page'));
+    }
+
+    public function teams(Request $request)
+    {
+        $page     = (int) $request->query('page', 1);
+        $per_page = (int) $request->query('per_page', 5);
+
+        return $this->proxy('/teams', compact('page', 'per_page'));
+    }
+
+    public function tags(Request $request)
+    {
+        $page     = (int) $request->query('page', 1);
+        $per_page = (int) $request->query('per_page', 5);
+
+        return $this->proxy('/tags', compact('page', 'per_page'));
+    }
 }
