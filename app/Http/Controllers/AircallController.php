@@ -13,9 +13,12 @@ class AircallController extends Controller
 
     public function __construct()
     {
+
         $this->base  = rtrim(env('AIRCALL_API_BASE', 'https://api.aircall.io/v1'), '/');
-        $this->id    = env('AIRCALL_API_ID');
-        $this->token = env('AIRCALL_API_TOKEN');
+
+        $this->id    = config('services.aircall.key');
+        $this->token = config('services.aircall.token');
+
     }
 
     
@@ -23,6 +26,7 @@ class AircallController extends Controller
      
     private function client()
     {
+        
         return Http::withBasicAuth($this->id, $this->token)
             ->acceptJson()
             ->withOptions(['force_ip_resolve' => 'v4']) 
