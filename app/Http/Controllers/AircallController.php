@@ -106,7 +106,7 @@ class AircallController extends Controller
         return $this->proxy('/tags', compact('page', 'per_page'));
     }
 #Lista de compañia
-      public function company(Request $request)
+    public function company(Request $request)
     {
         $page     = (int) $request->query('page', 1);
         $per_page = (int) $request->query('per_page', 5);
@@ -116,8 +116,28 @@ class AircallController extends Controller
 
     #usuarios por id
     public function userById($id)
-{
-    return $this->proxy("/users/{$id}");
-}
+    {
+        return $this->proxy("/users/{$id}");
+    }
+
+    public function callsById($id)
+    {
+        return $this->proxy("/calls/{$id}");
+    }
+    
+    public function contactsById($id)
+    {
+        return $this->proxy("/contacts/{$id}");
+    }
+
+    public function numbersById($id)
+    {
+        return $this->proxy("/numbers/{$id}");
+    }
+
+    public function userByEmail($mail)
+    {
+        return $this->proxy("/users/{$mail}");
+    }
 
 }
