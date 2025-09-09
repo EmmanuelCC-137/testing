@@ -63,7 +63,7 @@ class AircallController extends Controller
     public function calls(Request $request)
     {
         $page     = (int) $request->query('page', 1);
-        $per_page = (int) $request->query('per_page', 5);
+        $per_page = (int) $request->query('per_page', 10);
 
         return $this->proxy('/calls', compact('page', 'per_page'));
     }
