@@ -12,3 +12,5 @@ Route::get('/aircall/numbers', [AircallController::class, 'numbers']);
 Route::get('/aircall/teams', [AircallController::class, 'teams']);
 Route::get('/aircall/tags', [AircallController::class, 'tags']);
 Route::get('/aircall/company', [AircallController::class, 'company']);
+//usuarios por id
+Route::get('/aircall/users/{id}', [AircallController::class, 'userById']);

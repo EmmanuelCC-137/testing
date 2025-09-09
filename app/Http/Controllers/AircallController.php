@@ -113,4 +113,11 @@ class AircallController extends Controller
 
         return $this->proxy('/company', compact('page', 'per_page'));
     }
+
+    #usuarios por id
+    public function userById($id)
+{
+    return $this->proxy("/users/{$id}");
+}
+
 }
